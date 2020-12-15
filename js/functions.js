@@ -34,6 +34,7 @@ console.log(helloMessage);
  */
 let myName = " Audiesha";
 console.log(sayHello(myName));
+
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
 var random = Math.floor((Math.random() * 3) + 1);

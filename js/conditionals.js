@@ -19,7 +19,19 @@
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
-
+function analyzeColor(color) {
+  if (color === "blue") {
+    return "The Sky is Blue";
+  } else if (color === "red") {
+    return "Strawberries are red too"
+  } else if (color === "cyan") {
+    return "I know nothing about Cyan!"
+  } else if (color === "orange") {
+    return "Orange you glad I asked you this question?"
+  } else {
+    return "That color is alright,I guess..."
+  }
+}
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -32,40 +44,25 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your function and console.log the results.
  * You should see a different message every time you refresh the page
  */
-
-  var analyzeColor = function (color) {
-    if (color === "blue") {
-      return "The Sky is Blue";
-    } else if (color === "red") {
-      return "Strawberries are red too"
-    } else if (color === "cyan") {
-      return "I know nothing about Cyan!"
-    } else if (color === "orange") {
-      return "Orange you glad I asked you this question?"
-    } else {
-      return "That color is alright,I guess..."
-    }
-  }
-  console.log(analyzeColor(randomColor));
+console.log(analyzeColor(randomColor));
 /**
  * TODO:
  * Refactor your above function to use a switch-case statement
  */
-var analyzeColor = prompt("What's your favorite color'?");
-switch(analyzeColor) {
-  case "blue":
-    alert("The Sky is Blue!");
-    break;
-  case "red":
-    alert("Strawberries are red too");
-    break;
-  case "orange":
-    alert("Orange... that's a strange one.");
-    break;
-  default:
-    alert(analyzeColor + " isn't my favorite, but to each its own, i guess !");
-    break;
+
+var colorAnalyze = function (color) {
+  switch (color.toUpperCase()) {
+    case "blue":
+      alert("The Sky is Blue!");
+    case "red":
+      alert("Strawberries are red too");
+    case "orange":
+      alert("Orange... that's a strange one.");
+    default:
+      alert(analyzeColor + " isn't my favorite, but to each its own, i guess !");
+  }
 }
+console.log(colorAnalyze(randomColor));
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
@@ -75,6 +72,7 @@ switch(analyzeColor) {
 
 /* ########################################################################## */
 let color = prompt("What is your fave color?");
+console.log(analyzeColor(color));
 
 /**
  * TODO:
