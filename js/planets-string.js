@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+
+
   let planetsString = "Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune";
   /* let planetsArray;*/
 
@@ -31,4 +33,16 @@
   planetList += "<li></ul>"
   console.log(planetList);
 
+  /*or*/
+
+ /* let planetStr = planetsArray.join("<br>");
+  console.log(planetStr);*/
+  let htmlString = '<ul> <li>';
+  htmlString += planetsArray.join('</li> <li>');
+  htmlString += '</li> </ul>';
+  console.log(htmlString);
+
+  document.getElementById("demo").innerHTML = htmlString;
+
 })();
+

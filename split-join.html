@@ -3,8 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>split-join</title>
+  <link rel="stylesheet" href="css/string-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<p><button onclick="myMove()">Click to Make me move!</button></p>
+
+<div id ="container">
+  <div id ="animate"><p id="demo"></p></div>
+</div>
+
+
+<script>
+  function myMove() {
+    var elem = document.getElementById("animate");
+    var pos = 0;
+    var id = setInterval(frame, 5);
+    function frame() {
+      if (pos === 350) {
+        clearInterval(id);
+      } else {
+        pos++;
+        elem.style.top = pos + "px";
+        elem.style.left = pos + "px";
+      }
+    }
+  }
+</script>
+
+
 <script src = js/planets-string.js></script>
 </body>
 </html>
