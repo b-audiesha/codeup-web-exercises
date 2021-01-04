@@ -12,7 +12,7 @@
    * Create a log statement that will log the number of elements in the names
    * array.
    */
-  console.log([names.length]);
+  console.log(names.length);
   /**
    * TODO:
    * Create log statements that will print each of the names individually by
@@ -36,6 +36,10 @@
   for (let i = 0; i < names.length; i++) {
     console.log('The name at index :' + i + ' is: ' + names[i]);
   }
+  /* or*/
+  for (let i = 0; i < names.length; i++) console.log(names[i]);
+
+
 
   /**
    * TODO:
@@ -61,7 +65,7 @@
    *  > second([1, 2, 3, 4, 5]) // returns 2
    *  > last([1, 2, 3, 4, 5]) // return 5
    */
-  let numbers = [1,2,3,4,5];
+  let numbers = [1, 2, 3, 4, 5];
 
   let first = function (arr) {
     return arr [0];
@@ -70,10 +74,29 @@
     return arr [1];
   }
   let last = function (arr) {
-    return arr[arr.length-1];
+    return arr[arr.length - 1];
   }
-  console.log(first(numbers ));
-  console.log(second(numbers ));
-  console.log(last(numbers ));
+  console.log(first(numbers));
+  console.log(second(numbers));
+  console.log(last(numbers));
+
+  /*or*/
+
+  function fst(arr) {
+    return arr[0];
+  }
+
+  function two(arr) {
+    return arr[1];
+  }
+
+  function lst(arr) {
+    return arr.length[-1];
+  }
+  console.log(fst(numbers));
+  console.log(two(numbers));
+  console.log(lst(numbers));
+
+
 
 })();
