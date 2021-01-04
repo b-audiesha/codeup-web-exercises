@@ -97,6 +97,4 @@
   console.log(two(numbers));
   console.log(lst(numbers));
 
-
-
 })();
