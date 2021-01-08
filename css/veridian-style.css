@@ -1,0 +1,123 @@
+.subtext {
+  color: #264653;
+  text-align: center;
+}
+.list-heads {
+  color:#2A9D8F;
+}
+.fancy-header {
+  color:#2A9D8F;
+  font-family: 'Bebas Neue', cursive;
+  font-size:70px;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+/*basic styles to the text*/
+.styled-table thead tr {
+  background-color: #2A9D8F;
+  color: #ffffff;
+  text-align: left;
+}
+
+/*space things out*/
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+/*Add a bottom border to each row for separation*/
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+/*Add a lighter background to every second row*/
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+/*add a dark border to the very last row*/
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #2A9D8F;
+}
+
+/*make the active row look different*/
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #2A9D8F;
+}
+#container {
+  color:#999;
+  /*text-transform: uppercase;*/
+  /*font-size:36px;*/
+  font-weight:bold;
+  padding-top:20px;
+  /*position:fixed;*/
+  width:100%;
+  bottom:45%;
+  display:block;
+  text-decoration:#2A9D8F;
+  font-family: 'Bebas Neue', cursive;
+  font-size:70px;
+  text-align: center;
+}
+
+#flip {
+  height:80px;
+  overflow:hidden;
+}
+
+#flip > div > div {
+  color:#fff;
+  padding:4px 12px;
+  height:45px;
+  margin-bottom:45px;
+  display:inline-block;
+}
+
+#flip div:first-child {
+  animation: show 5s linear infinite;
+}
+
+#flip div div {
+  background:#2A9D8F;
+}
+#flip div:first-child div {
+  background:#2A9D8F;
+}
+#flip div:last-child div {
+  background:#2A9D8F;
+}
+
+@keyframes show {
+  0% {margin-top:-270px;}
+  5% {margin-top:-180px;}
+  33% {margin-top:-180px;}
+  38% {margin-top:-90px;}
+  66% {margin-top:-90px;}
+  71% {margin-top:0px;}
+  99.99% {margin-top:0px;}
+  100% {margin-top:-270px;}
+}
+
+p {
+  position:fixed;
+  width:100%;
+  bottom:30px;
+  font-size:12px;
+  color:#999;
+  margin-top:200px;
+}
+
+.content img {
+  padding-right: 5px
+}
+
+.images {
+  width:70%;
+  height:70%;
+  padding : 10px 10px;
+}
+
