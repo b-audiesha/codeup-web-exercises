@@ -64,6 +64,12 @@
         console.log("Oooo! Bummer" + " " + shoppers.name + "," + " Looks like your going to have to drop some more dough, you only spent" + " " + "$" + shoppers.amount + ", " + "You need to spend " + "$" + (200 - shoppers.amount) + " more dollars to qualify for your discount !");
       }
     });
+/*For each method works on every variable type thats an array*/
+    /*higherorder function, is a function that can return a function as an argument or output a function*/
+
+
+
+
 
 
     /** TODO:
@@ -170,7 +176,7 @@
     let showBookInfo = function (book, index) {
       console.log("Book Title:" + book.title);
       console.log("Author:" + book.author.firstName + " " + book.author.lastName);
-      console.log("Book #:" + (index + 1));
+      console.log("Book # :" + (index + 1));
     }
 
     let newBook = [];
@@ -178,4 +184,5 @@
 
     newBook.forEach(showBookInfo);
   }
+
 )();
