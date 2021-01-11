@@ -1,0 +1,10 @@
+h1 {
+  color: black;
+  border-color: gray;
+  border-style: solid;
+  border-radius: 8px;
+}
+body {
+  background-size: 1000px;
+  background-color: #7CB342;
+}
