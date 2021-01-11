@@ -120,4 +120,7 @@ p {
   height:70%;
   padding : 10px 10px;
 }
-
+ul, li {
+  list-style-type: square;
+  color: cadetblue;
+}
