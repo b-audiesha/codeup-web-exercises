@@ -5,7 +5,6 @@
 }
 
 
-
 .jumbotron {
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,8 +19,9 @@
   width: 100%;
   margin-top: 0;
   margin-bottom: auto;
-  padding:0;
+  padding: 0;
 }
+
 .list-group {
   list-style: none;
 }
@@ -29,9 +29,11 @@
 .card-deck {
   width: 100%;
 }
+
 .card-header {
   background-color: #007BFF;
 }
+
 .dropdown-header {
   background-color: #E6ECF0;
 }
