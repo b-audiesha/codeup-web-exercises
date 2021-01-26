@@ -4,20 +4,45 @@
   <meta charset="utf-8">
   <title>Defuse the BOM</title>
 </head>
+<style>@import url(https://fonts.googleapis.com/css?family=Advent+Pro:100);
+
+html {
+  background: url(https://media.giphy.com/media/dupLB4LFfK7m5dmfkA/giphy.gif) no-repeat center center fixed;
+  background-size: cover;
+}
+
+h1 {
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 3em;
+  margin: .2em .5em;
+  color: white;
+}
+
+body {
+  height: 100%;
+}
+#timer {
+  background:red;
+}
+
+</style>
 <body>
 
-<h2 id="message">This BOM will self destruct in <span id="timer">5</span> seconds...</h2>
+
+<h1 id="message">This BOM will self destruct in <span id="timer">5</span> seconds...</h1>
 <button id="defuser">Defuse the BOM</button>
+<audio src="audio/exterminate.mp3" id="my_audio" loop="loop"></audio>
 
 <script>
-  (function() {
+
+  (function () {
     "use strict";
 
     let detonationTimer = 5;
     let interval = 1000;
 
     // TODO: This function needs to be called once every second
-    let updateTimer = setInterval(function() {
+    let updateTimer = setInterval(function () {
       if (detonationTimer <= 0) {
         alert('EXTERMINATE!');
         document.body.innerHTML = '';
@@ -43,6 +68,11 @@
     // We will learn about events in the DOM lessons
     let defuser = document.getElementById('defuser');
     defuser.addEventListener('click', defuseTheBOM);
+    setTimeout(function(){
+      document.getElementById("my_audio").play();
+      console.log('your audio is started just now');
+    }, 5000)
+
   })();
 </script>
 </body>
