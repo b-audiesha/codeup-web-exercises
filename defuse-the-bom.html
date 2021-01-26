@@ -13,12 +13,12 @@
   (function() {
     "use strict";
 
-    var detonationTimer = 5;
-    var interval = 1000;
+    let detonationTimer = 5;
+    let interval = 1000;
 
     // TODO: This function needs to be called once every second
     let updateTimer = setInterval(function() {
-      if (detonationTimer == 0) {
+      if (detonationTimer <= 0) {
         alert('EXTERMINATE!');
         document.body.innerHTML = '';
       } else if (detonationTimer > 0) {
