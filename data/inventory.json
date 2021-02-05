@@ -1,0 +1,45 @@
+[
+  {
+    "title": "Fez's",
+    "quantity": 25,
+    "categories": [
+      "tool"
+    ],
+    "price": 20
+  },
+  {
+    "title": "Psychic Paper",
+    "quantity": 5,
+    "categories": [
+      "tool",
+      "paper"
+    ],
+    "price": 100
+  },
+  {
+    "title": "Bow Ties",
+    "quantity": 5,
+    "categories": [
+      "tool",
+      "fashion",
+      "style"
+    ],
+    "price": 200
+  },
+  {
+    "title": " Sonic Screwdrivers",
+    "quantity": 25,
+    "categories": [
+      "tool"
+    ],
+    "price": 10
+  },
+  {
+    "title": "Dalek",
+    "quantity": 25,
+    "categories": [
+      "Annoying Alien Foes"
+    ],
+    "price": 1000
+  }
+]

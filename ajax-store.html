@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Store</title>
+</head>
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
+            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+             aria-expanded="false">Dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+</header>
+<h1>Rivers Time Lord Surplus</h1>
+<blockquote class="blockquote text-center">
+  <p class="mb-0">You know when you see a photograph of someone you know, but it's from years before you knew them. It's
+    like they're not quite finished—they're not done yet.
+  </p>
+  <footer class="blockquote-footer">River Song <cite title="Source Title">Doctor Who</cite></footer>
+</blockquote>
+<table id="products" class="table table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Categories</th>
+  </tr>
+  </thead>
+  <tbody id="insertProducts"></tbody>
+</table>
+
+<button type="button" class="btn btn-dark btn-lg">Refresh Inventory</button>
+
+<!--TODO: Create an AJAX GET request for the file under data/inventory.json
+
+TODO: Take the data from inventory.json and append it to the products table
+HINT: Your data should come back as a JSON object; use console.log() to inspect
+its contents and fields
+HINT: You will want to target #insertProducts for your new HTML elements-->
+
+
+<script src=js/jquery-3.5.1.js></script>
+<script>
+  $.get('data/inventory.json').done(function (data) {
+    console.log(data);
+    let inventoryHtml = ""
+    for (var i = 0; i < data.length; i++) {
+      inventoryHtml += '<tr>' + '<td>' + data[i].title + '</td>' + '<td>' + data[i].quantity + '</td>' + '<td>' + data[i].price + '</td>' + '<td>' + data[i].categories + '</td>'
+        + '</tr>'
+    }
+    $('#insertProducts').html(inventoryHtml);
+
+  });
+
+
+</script>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
