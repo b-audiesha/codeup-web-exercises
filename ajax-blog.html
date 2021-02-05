@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Store</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+  #cake {
+    height: 18%;
+    width: 18%;
+  }
+
+  .jumbotron-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .6;
+    border-style: solid;
+    border-color: deeppink;
+  }
+
+  h1 {
+    font-family: 'Lobster', cursive;
+    font-size: 80px;
+    color: deeppink;
+    opacity: 2;
+    text-align: center;
+  }
+
+  p {
+    color: black;
+    text-align: center;
+    background-color: white;
+  }
+
+  .pink {
+    background-color: #06d6a0;
+  }
+
+  nav {
+    color: #8338ec;
+  }
+
+</style>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Sweet Dreams </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+      Navbar text with an inline element
+    </span>
+    </div>
+  </nav>
+</header>
+
+<body>
+<div class="container py-5">
+  <div class="jumbotron text-white jumbotron-image shadow"
+       style="background-image: url(https://images.pexels.com/photos/1174114/pexels-photo-1174114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);">
+    <h1 class="mb-4">
+      Sweet Dreams
+    </h1>
+    <p class="mb-4">
+      A blog that's guaranteed to give you a cavity.
+    </p>
+  </div>
+</div>
+
+<img
+  src="https://images.pexels.com/photos/2062883/pexels-photo-2062883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+  class="container float-left" id="cake">
+
+
+<div id="post" class="pink row">
+</div>
+
+<script src=js/jquery-3.5.1.js></script>
+<script>
+  $.get('data/blog.json').done(function (data) {
+    console.log(data);
+    let blogPost = ""
+    for (let i = 0; i < data.length; i++) {
+      blogPost += "<div class='col'> <h5><b>Title :</b></h5>" + data[i].title;
+      blogPost += "<h5><b>Content :</b></h5>" + data[i].content;
+      blogPost += "<h5><b>Entry Categories :</b></h5>" + data[i].categories;
+      blogPost += "<h5><b>Date :</b></h5>" + data[i].date + '</div>'
+    }
+    $('#post').html(blogPost);
+
+  });
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
