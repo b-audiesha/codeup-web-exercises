@@ -15,6 +15,8 @@ $(document).ready(function () {
     konami(function () {
       alert(" Huzzah You NOW have 30 extra lives!");
       $('body').css('background-color', 'pink');
+  
+
     });
   });//39
 })();//23
