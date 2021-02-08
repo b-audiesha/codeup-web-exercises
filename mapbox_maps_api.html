@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.css' rel='stylesheet'/>
+  <style>
+    #map {
+      /* the width and height may be set to any size */
+      width: 100%;
+      height: 700px;
+    }
+  </style>
+</head>
+<body>
+
+<div id='mapbox-map' style='width: 120vh; height: 70vh; margin:15vh auto; border: 5px solid black'></div>
+
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src=js/keys.js></script>
+<!-- Mapbox Geocoder Util Methods -->
+<script src="mapbox-geocoder-utils.js"></script>
+
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhdHRpbi1hdWRpZXNoYSIsImEiOiJja2t3cXlnOGwxZDJyMzFteTU4ZzAxdHdhIn0.Ac6sf5P0gGthgoVpR46D9g';
+  var map = new mapboxgl.Map({
+    container: 'mapbox-map',
+    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+    center: [-87.2169, 30.4213], // starting position [lng, lat] normally maps are lat & long except in mapbox its long & lad west is a negative coordinate
+    zoom: 9 // starting zoom
+  });
+
+  map.addControl(new mapboxgl.NavigationControl());
+
+  /*this will console log the coordinates of a destination if you dont know it*/
+  function geocode(search, token) {
+    var baseUrl = 'https://api.mapbox.com';
+    var endPoint = '/geocoding/v5/mapbox.places/';
+    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+      .then(function (res) {
+        return res.json();
+        // to get all the data from the request, comment out the following three lines...
+      }).then(function (data) {
+        return data.features[0].center;
+      });
+  }
+
+  geocode("600 E Gregory St, Pensacola, FL 32502", mapboxToken).then(function (data) {
+    console.log(data);
+  })
+
+
+  /*this will console log the destination from coordinates */
+  /*
+    function reverseGeocode(coordinates, token) {
+      var baseUrl = 'https://api.mapbox.com';
+      var endPoint = '/geocoding/v5/mapbox.places/';
+      return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+        .then(function(res) {
+          return res.json();
+        })
+        // to get all the data from the request, comment out the following three lines...
+        .then(function(data) {
+          return data.features[0].place_name;
+        });
+    }
+    */
+
+  /*basic pop ups that are already expanded upon load, no creativity*/
+  /*
+    var irishPub = {
+      address: "600 E Gregory St, Pensacola, FL 32502",
+      popupHTML: "<p>McGuire's Irish Pub!</p>"
+    };
+    var tinCow = {
+      address: "102 S Palafox St, Pensacola, FL 325022",
+      popupHTML: "<p>Tin Cow!</p>"
+    };
+    var swampys = {
+      address: "19773 E Pennsylvania Ave, Dunnellon, FL 34432",
+      popupHTML: "<p>Swampy's Bar & Grille!</p>"
+    };
+
+
+    function placeMarkerAndPopup(info, token, map) {
+      geocode(info.address, token).then(function (coordinates) {
+        var popup = new mapboxgl.Popup()
+          .setHTML(info.popupHTML);
+        var marker = new mapboxgl.Marker()
+          .setLngLat(coordinates)
+          .addTo(map)
+          .setPopup(popup);
+        popup.addTo(map);
+      });
+    }
+
+    placeMarkerAndPopup(irishPub, mapboxToken, map);
+    placeMarkerAndPopup(tinCow, mapboxToken, map);
+    placeMarkerAndPopup(swampys, mapboxToken, map);
+  */
+
+
+</script>
+</body>
+</html>
