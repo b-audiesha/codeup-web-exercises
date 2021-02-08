@@ -4,36 +4,118 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.css' rel='stylesheet'/>
-  <style>
-    #map {
-      /* the width and height may be set to any size */
-      width: 100%;
-      height: 700px;
-    }
-  </style>
-</head>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/mapbox-style.css">
 <body>
+<div class="container header text-center">
+  <h1> Panhandle Eats</h1>
+</div>
 
-<div id='mapbox-map' style='width: 120vh; height: 70vh; margin:15vh auto; border: 5px solid black'></div>
+<!--search and geocode-->
+<form class="example" action="action_page.php" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<!--map-->
+<div id='map' style='width: 60vh; height: 35vh; margin:7vh auto; border: 5px solid black' class="map"></div>
+
+
+<!--cards-->
+<div class="card-group">
+  <div class="card carousel slide" data-ride="carousel">
+    <img src="img/tin-cow-logo.svg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <!-- <h5 class="card-title">Card title</h5>-->
+      <p class="card-text">
+        "The Tin Cow is a fun and eclectic custom burger restaurant in the heart of beautiful Downtown Pensacola. We
+        have deliciously boozy Spiked Milkshakes (as well as regular milkshakes), lots of shareable starters and a huge
+        canned craft beer selection."</p>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="btn marker-button">Visit Here!</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="img/mcguires-logo.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <!--<h5 class="card-title">Card title</h5>-->
+      <p class="card-text">"McGuire’s Irish Pub first opened in 1977 as a small neighborhood pub in a shopping center.
+        In 1982 McGuire’s moved to its current location; Pensacola’s original 1927 Old Firehouse. Inside the pub you’ll
+        find a turn-of-the-century, New York Irish Saloon themed 615-seat restaurant.
+        We are celebrated for our atmosphere boasting more than One Million signed dollar bills hanging from the
+        ceilings and walls of the Pub. In 1996, a second location, McGuire’s Irish Pub of Destin opened on beautiful
+        Destin Harbor with the same great food and live Irish entertainment."</p>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="btn marker-button">Visit Here!</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="img/lamberts-logo.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <!--<h5 class="card-title">Card title</h5>-->
+      <p class="card-text">
+        People who visit Lambert’s Cafe for the first time are invariably amazed at the generous portions served on each
+        order. These generous servings along with our “THROWED ROLLS” have inspired many questions. We cannot describe
+        our activity in great detail, but we’ve endeavored to point out some of the highlights of our “Throwed Rolls”
+        cafe.</p>
+    </div>
+    <div class="card-footer">
+      <a href="#" class="btn marker-button">Visit Here</a>
+    </div>
+  </div>
+</div>
+
 
 <!-- Mapbox JS -->
-<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js"></script>
 <script src=js/keys.js></script>
 <!-- Mapbox Geocoder Util Methods -->
 <script src="mapbox-geocoder-utils.js"></script>
-
-
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhdHRpbi1hdWRpZXNoYSIsImEiOiJja2t3cXlnOGwxZDJyMzFteTU4ZzAxdHdhIn0.Ac6sf5P0gGthgoVpR46D9g';
   var map = new mapboxgl.Map({
-    container: 'mapbox-map',
+    container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
     center: [-87.2169, 30.4213], // starting position [lng, lat] normally maps are lat & long except in mapbox its long & lad west is a negative coordinate
     zoom: 9 // starting zoom
   });
 
   map.addControl(new mapboxgl.NavigationControl());
+
+  /*Display pop up with loop*/
+  let restaurants = [
+    {
+      coordinates: [-87.2146694, 30.4110612],
+      name: "Tin Cow",
+      address: "849 E Commerce St, San Antonio, TX 78205"
+    },
+    {
+      coordinates: [-87.6821641, 30.3707295],
+      name: "Lamberts Cafe",
+      address: "300 Alamo Plaza, San Antonio, TX 78205"
+
+    },
+    {
+      coordinates: [-87.2024655, 30.4180618],
+      name: "Mcguires Irish Pub",
+      address: "6701 San Jose Dr, San Antonio, TX 78214"
+    }
+  ]
+
+  restaurants.forEach(function (location)
+    /* location: {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string*/ {
+    let popup = new mapboxgl.Popup()
+      .setHTML(`<p>${location.name}<br>${location.address}</p>`)
+    new mapboxgl.Marker()
+      .setLngLat(location.coordinates)
+      .addTo(map)
+      .setPopup(popup)
+  })
+
 
   /*this will console log the coordinates of a destination if you dont know it*/
   function geocode(search, token) {
@@ -48,30 +130,29 @@
       });
   }
 
+
   geocode("600 E Gregory St, Pensacola, FL 32502", mapboxToken).then(function (data) {
     console.log(data);
-  })
+  });
 
 
-  /*this will console log the destination from coordinates */
-  /*
-    function reverseGeocode(coordinates, token) {
-      var baseUrl = 'https://api.mapbox.com';
-      var endPoint = '/geocoding/v5/mapbox.places/';
-      return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
-          return res.json();
-        })
-        // to get all the data from the request, comment out the following three lines...
-        .then(function(data) {
-          return data.features[0].place_name;
-        });
-    }
-    */
+  /* this will console log the destination from coordinates */
+  /* function reverseGeocode(coordinates, token) {
+     var baseUrl = 'https://api.mapbox.com';
+     var endPoint = '/geocoding/v5/mapbox.places/';
+     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+       .then(function (res) {
+         return res.json();
+       })
+       // to get all the data from the request, comment out the following three lines...
+       .then(function (data) {
+         return data.features[0].place_name;
+       });
+   }*/
 
-  /*basic pop ups that are already expanded upon load, no creativity*/
-  /*
-    var irishPub = {
+  /* basic pop ups that are already expanded upon load, no creativity*/
+
+  /*  var irishPub = {
       address: "600 E Gregory St, Pensacola, FL 32502",
       popupHTML: "<p>McGuire's Irish Pub!</p>"
     };
@@ -79,30 +160,38 @@
       address: "102 S Palafox St, Pensacola, FL 325022",
       popupHTML: "<p>Tin Cow!</p>"
     };
-    var swampys = {
-      address: "19773 E Pennsylvania Ave, Dunnellon, FL 34432",
-      popupHTML: "<p>Swampy's Bar & Grille!</p>"
+    var lambertsAlabama = {
+      address: "2981 S McKenzie St, Foley, AL 36535",
+      popupHTML: "<p>Lambert's Cafe!</p>"
     };
+*/
 
-
-    function placeMarkerAndPopup(info, token, map) {
-      geocode(info.address, token).then(function (coordinates) {
-        var popup = new mapboxgl.Popup()
-          .setHTML(info.popupHTML);
-        var marker = new mapboxgl.Marker()
-          .setLngLat(coordinates)
-          .addTo(map)
-          .setPopup(popup);
-        popup.addTo(map);
-      });
-    }
-
-    placeMarkerAndPopup(irishPub, mapboxToken, map);
-    placeMarkerAndPopup(tinCow, mapboxToken, map);
-    placeMarkerAndPopup(swampys, mapboxToken, map);
-  */
+  /*   function placeMarkerAndPopup(info, token, map) {
+       geocode(info.address, token).then(function (coordinates) {
+         var popup = new mapboxgl.Popup()
+           .setHTML(info.popupHTML);
+         var marker = new mapboxgl.Marker()
+           .setLngLat(coordinates)
+           .addTo(map)
+           .setPopup(popup);
+         popup.addTo(map);
+       });
+     }
+ */
+  /*   placeMarkerAndPopup(irishPub, mapboxToken, map);
+     placeMarkerAndPopup(tinCow, mapboxToken, map);
+     placeMarkerAndPopup(lambertsAlabama, mapboxToken, map);*/
 
 
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossOrigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossOrigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossOrigin="anonymous"></script>
 </body>
 </html>
