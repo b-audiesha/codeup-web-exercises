@@ -74,9 +74,10 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js"></script>
 <script src=js/keys.js></script>
 <!-- Mapbox Geocoder Util Methods -->
-<script src="mapbox-geocoder-utils.js"></script>
+<!--<script src="mapbox-geocoder-utils.js"></script>-->
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhdHRpbi1hdWRpZXNoYSIsImEiOiJja2t3cXlnOGwxZDJyMzFteTU4ZzAxdHdhIn0.Ac6sf5P0gGthgoVpR46D9g';
+  mapboxgl.accessToken = mapboxToken
+
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
@@ -91,12 +92,12 @@
     {
       coordinates: [-87.2146694, 30.4110612],
       name: "Tin Cow",
-      address: "849 E Commerce St, San Antonio, TX 78205"
+      address: "102 S Palafox St, Pensacola, FL 325022"
     },
     {
       coordinates: [-87.6821641, 30.3707295],
       name: "Lamberts Cafe",
-      address: "300 Alamo Plaza, San Antonio, TX 78205"
+      address: "2981 S McKenzie St, Foley, AL 36535"
 
     },
     {
@@ -106,12 +107,12 @@
     }
   ]
 
-  restaurants.forEach(function (location)
-    /* location: {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string*/ {
+  restaurants.forEach(function (arr)
+    /* array: {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string*/ {
     let popup = new mapboxgl.Popup()
-      .setHTML(`<p>${location.name}<br>${location.address}</p>`)
+      .setHTML(`<p>${arr.name}<br>${arr.address}</p>`)
     new mapboxgl.Marker()
-      .setLngLat(location.coordinates)
+      .setLngLat(arr.coordinates)
       .addTo(map)
       .setPopup(popup)
   })
