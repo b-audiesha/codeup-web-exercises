@@ -14,12 +14,13 @@ mapboxgl.accessToken = mapboxToken
     {
       coordinates: [-87.2146694, 30.4110612],
       name: "Tin Cow",
-      address: "102 S Palafox St, Pensacola, FL 325022"
+      address: "102 S Palafox St, Pensacola, FL 325022",
+
     },
     {
       coordinates: [-87.6821641, 30.3707295],
       name: "Lamberts Cafe",
-      address: "2981 S McKenzie St, Foley, AL 36535"
+      address: "2981 S McKenzie St, Foley, AL 36535",
 
     },
     {
@@ -65,7 +66,8 @@ mapboxgl.accessToken = mapboxToken
     map.flyTo({
       center: [-87.2146694, 30.4110612],
       zoom: 20,
-      essential: true // this animation is considered essential with respect to prefers-reduced-motion
+      essential: true,
+       // this animation is considered essential with respect to prefers-reduced-motion
     });
   });
 
@@ -84,14 +86,4 @@ mapboxgl.accessToken = mapboxToken
         essential: true // this animation is considered essential with respect to prefers-reduced-motion
       });
     });
- $(".flipper").click(function() {
-  var target = $( event.target );
-  if ( target.is("a") ) {
-  //follow that link
-  return true;
-  } else {
-  $(this).toggleClass("flip");
-  }
-  return false;
-  });
 
