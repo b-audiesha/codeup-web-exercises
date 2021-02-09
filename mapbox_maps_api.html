@@ -23,8 +23,27 @@
 <div id='map' style='width: 60vh; height: 35vh; margin:7vh auto; border: 5px solid black' class="map"></div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--cards-->
 <div class="card-group">
+  <!-- <div class="flipper col-sm-3"></div> -->
   <div class="card carousel slide" data-ride="carousel">
     <img src="img/tin-cow-logo.svg" class="card-img-top" alt="...">
     <div class="card-body">
@@ -35,7 +54,7 @@
         canned craft beer selection."</p>
     </div>
     <div class="card-footer">
-      <a href="#" class="btn marker-button">Visit Here!</a>
+      <button id="buttonTin" class="btn marker-button">Visit Here!</button>
     </div>
   </div>
   <div class="card">
@@ -50,7 +69,7 @@
         Destin Harbor with the same great food and live Irish entertainment."</p>
     </div>
     <div class="card-footer">
-      <a href="#" class="btn marker-button">Visit Here!</a>
+      <button id="buttonMcguires" class="btn marker-button">Visit Here!</button>
     </div>
   </div>
   <div class="card">
@@ -64,7 +83,7 @@
         cafe.</p>
     </div>
     <div class="card-footer">
-      <a href="#" class="btn marker-button">Visit Here</a>
+      <button id="buttonLam" class="btn marker-button">Visit Here!</button>
     </div>
   </div>
 </div>
@@ -73,118 +92,7 @@
 <!-- Mapbox JS -->
 <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.0/mapbox-gl.js"></script>
 <script src=js/keys.js></script>
-<!-- Mapbox Geocoder Util Methods -->
-<!--<script src="mapbox-geocoder-utils.js"></script>-->
-<script>
-  mapboxgl.accessToken = mapboxToken
-
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-    center: [-87.2169, 30.4213], // starting position [lng, lat] normally maps are lat & long except in mapbox its long & lad west is a negative coordinate
-    zoom: 9 // starting zoom
-  });
-
-  map.addControl(new mapboxgl.NavigationControl());
-
-  /*Display pop up with loop*/
-  let restaurants = [
-    {
-      coordinates: [-87.2146694, 30.4110612],
-      name: "Tin Cow",
-      address: "102 S Palafox St, Pensacola, FL 325022"
-    },
-    {
-      coordinates: [-87.6821641, 30.3707295],
-      name: "Lamberts Cafe",
-      address: "2981 S McKenzie St, Foley, AL 36535"
-
-    },
-    {
-      coordinates: [-87.2024655, 30.4180618],
-      name: "Mcguires Irish Pub",
-      address: "6701 San Jose Dr, San Antonio, TX 78214"
-    }
-  ]
-
-  restaurants.forEach(function (arr)
-    /* array: {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string} | {address: string, coordinates: number[], name: string*/ {
-    let popup = new mapboxgl.Popup()
-      .setHTML(`<p>${arr.name}<br>${arr.address}</p>`)
-    new mapboxgl.Marker()
-      .setLngLat(arr.coordinates)
-      .addTo(map)
-      .setPopup(popup)
-  })
-
-
-  /*this will console log the coordinates of a destination if you dont know it*/
-  function geocode(search, token) {
-    var baseUrl = 'https://api.mapbox.com';
-    var endPoint = '/geocoding/v5/mapbox.places/';
-    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-      .then(function (res) {
-        return res.json();
-        // to get all the data from the request, comment out the following three lines...
-      }).then(function (data) {
-        return data.features[0].center;
-      });
-  }
-
-
-  geocode("600 E Gregory St, Pensacola, FL 32502", mapboxToken).then(function (data) {
-    console.log(data);
-  });
-
-
-  /* this will console log the destination from coordinates */
-  /* function reverseGeocode(coordinates, token) {
-     var baseUrl = 'https://api.mapbox.com';
-     var endPoint = '/geocoding/v5/mapbox.places/';
-     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-       .then(function (res) {
-         return res.json();
-       })
-       // to get all the data from the request, comment out the following three lines...
-       .then(function (data) {
-         return data.features[0].place_name;
-       });
-   }*/
-
-  /* basic pop ups that are already expanded upon load, no creativity*/
-
-  /*  var irishPub = {
-      address: "600 E Gregory St, Pensacola, FL 32502",
-      popupHTML: "<p>McGuire's Irish Pub!</p>"
-    };
-    var tinCow = {
-      address: "102 S Palafox St, Pensacola, FL 325022",
-      popupHTML: "<p>Tin Cow!</p>"
-    };
-    var lambertsAlabama = {
-      address: "2981 S McKenzie St, Foley, AL 36535",
-      popupHTML: "<p>Lambert's Cafe!</p>"
-    };
-*/
-
-  /*   function placeMarkerAndPopup(info, token, map) {
-       geocode(info.address, token).then(function (coordinates) {
-         var popup = new mapboxgl.Popup()
-           .setHTML(info.popupHTML);
-         var marker = new mapboxgl.Marker()
-           .setLngLat(coordinates)
-           .addTo(map)
-           .setPopup(popup);
-         popup.addTo(map);
-       });
-     }
- */
-  /*   placeMarkerAndPopup(irishPub, mapboxToken, map);
-     placeMarkerAndPopup(tinCow, mapboxToken, map);
-     placeMarkerAndPopup(lambertsAlabama, mapboxToken, map);*/
-
-
-</script>
+<script src=js/mapbox-js.js></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossOrigin="anonymous"></script>

@@ -1,5 +1,8 @@
 * {
-  box-sizing: border-box;
+
+   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 #map {
   /* the width and height may be set to any size */
@@ -58,4 +61,18 @@ form.example::after {
   content: "";
   clear: both;
   display: table;
+}
+.btn {
+display: block;
+position: relative;
+margin: 0px auto;
+width: 50%;
+height: 40px;
+padding: 10px;
+border: none;
+border-radius: 3px;
+font-size: 12px;
+text-align: center;
+color: #fff;
+background: #ee8a65;
 }
