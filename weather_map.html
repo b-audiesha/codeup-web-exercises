@@ -1,23 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>
-  Audis Weather Map
-</title>
+  <title>
+    Audis Weather Map
+  </title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/weather.css">
 </head>
+<body>
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header text-center">
-      <a href="#" class="navbar-brand nav-link">
-        <img src="img" alt="Logo"><strong>Weather App</strong>
+      <a href="#" class="navbar-brand nav-link weather">
+        <img src="img/weather-icon.png" class="img-responsive" id="logo" alt="Clouds"><strong>Weather App</strong>
       </a>
       <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="navcol">
         <span class="sr-only">Toggle Navigation</span>
@@ -25,22 +25,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
         <!-- this creates three lines on navbar collapse-->
       </button>
     </div>
     <div class="collapse navbar-collapse" id="navcol">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" id="navbar">
         <!-- this will display on the right of the navbar-->
-        <li><a href="weather_map.html"></a></li>
-        <li><a href="weather_map.html"></a></li>
-        <li><a href="weather_map.html"></a></li>
-       <!-- These are the fill links for the navigation bar-->
+        <li><a href="weather_map.html"></a>Current Conditions</li>
+        <li><a href="https://openweathermap.org/"></a>Open Weather App</li>
+        <li><a href="something else"></a>Forecast</li>
+        <!-- These are the fill links for the navigation bar-->
       </ul>
     </div>
   </div>
 </nav>
-<body>
+<!--search bar-->
+
+<div class="container" style="height:650px;">
+  <div class="row">
+    <div class="col-md-12" style="margin-bottom:10px;">
+      <h3 class="text-center">City</h3>
+      <span id="error" class="text-center"></span>
+    </div>
+    <label for="city"></label><input type="text" name="city" id="city" class="form-control" placeholder="Enter City Name">
+    <label for="days"></label><input type="text" name="city" id="days" class="form-control" placeholder="How Many Days?">
+    <button id="submitForcast" class="btn col-md-12">Search</button>
+  </div>
+</div>
+<div id="showWeather"></div>
+<!--table of information-->
 <div class="container pt-5">
   <div class="row">
     <div class="col-md-4" data-tilt>
@@ -48,7 +61,7 @@
         <h2 class="pt-4"><span>*</span>Temp</h2>
         <p>High</p>
         <p>Low</p>
-        <p>Precepitation</p>
+        <p>Precipitation</p>
         <p>Humidity</p>
         <!-- <button type="button" class="btn btn-dark">Buy</button> -->
       </div>
@@ -81,14 +94,14 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
-<script src=js/keys.js></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
 

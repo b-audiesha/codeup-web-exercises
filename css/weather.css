@@ -1,7 +1,32 @@
  body {
      background-color: #8e9aaf;
  }
- 
+ .navbar {
+   margin-block: 0;
+   padding: 0;
+   background-color: #06d6a0;
+   border: none;
+ }
+
+ .weather {
+   color: #7c9885; !important;
+   font-weight: 600;
+   font-size: 25px;
+ }
+#nav_list > li > a {
+  color: #7c9885; !important;
+  font-weight: 500;
+}
+
+#logo {
+  max-height:42px;
+  margin-right: 40px;
+  display:inline-block;
+  margin-top: -15px;
+
+  /*this margin moves the logo and title upwards*/
+}
+
  .content{
      background: white;
       border: 1px solid #ddd;
