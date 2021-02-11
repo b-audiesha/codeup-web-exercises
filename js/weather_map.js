@@ -28,6 +28,6 @@ function getForcast() {
           table+= '<td>' + data.list[i].weather[0].description + '</td>';
           table += '</tr>';
         }},})}
-$('#weatherContent').html();
+$('').html(table);
 $('#city').val('');
 $('#days').val('');
